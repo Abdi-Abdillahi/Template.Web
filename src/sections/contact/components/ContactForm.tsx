@@ -2,9 +2,9 @@ import { useState } from "react";
 
 import { Send } from "lucide-react";
 
-import {
+/* import {
   roleOptions,
-} from "./contact.data";
+} from "./contact.data"; */
 
 import { type FormState } from "./contact.types";
 
@@ -17,20 +17,15 @@ const initialState: FormState = {
 };
 
 export const ContactForm = () => {
-  const [form, setForm] =
-    useState<FormState>(initialState);
+  const [form, setForm] = useState<FormState>(initialState);
 
-  const [loading, setLoading] =
-    useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const [sent, setSent] =
-    useState(false);
-      const handleChange = (
+  const [sent, setSent] = useState(false);
+  const handleChange = (
     e: React.ChangeEvent<
-      HTMLInputElement |
-      HTMLTextAreaElement |
-      HTMLSelectElement
-    >
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
   ) => {
     setForm((prev) => ({
       ...prev,
@@ -38,9 +33,7 @@ export const ContactForm = () => {
     }));
   };
 
-  const handleSubmit = (
-    e: React.FormEvent
-  ) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     setLoading(true);
@@ -52,17 +45,25 @@ export const ContactForm = () => {
     }, 1400);
   };
 
+  // fix build error by using sent state
+  if (sent) {
+    return (
+      <div className="text-center py-10">
+        <h3 className="text-2xl font-semibold">Message Sent Successfully</h3>
 
+        <p className="text-muted-foreground mt-2">
+          Thank you for reaching out. We'll get back to you soon.
+        </p>
+      </div>
+    );
+  }
   return (
     <div className="rounded-3xl border border-zinc-200 bg-zinc-50 p-7 md:p-9">
       <h3 className="mb-6 text-xl font-bold text-zinc-800">
         Send us a message
       </h3>
 
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-4"
-      >
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         {/* Name + Contact */}
 
         <div className="grid gap-4 sm:grid-cols-2">
@@ -133,7 +134,7 @@ export const ContactForm = () => {
 
         {/* Roles */}
 
-    {/*     <div>
+        {/*     <div>
           <label className="mb-2 block text-xs font-semibold uppercase tracking-wider text-zinc-500">
             I am a...
           </label>

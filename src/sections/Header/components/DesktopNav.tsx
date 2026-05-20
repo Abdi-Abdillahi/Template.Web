@@ -5,19 +5,19 @@ const navLinks = [
   },
   {
     label: "About Us",
-    href: "/#about",
+    href: "#about",
   },
   {
     label: "Services",
-    href: "/#services",
+    href: "#services",
   },
   {
     label: "Tracking",
-    href: "/#Tracking",
+    href: "#Tracking",
   },
   {
     label: "Contact",
-    href: "/#contact",
+    href: "#contact",
   },
 ];
 

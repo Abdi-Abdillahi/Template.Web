@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import { ArrowRight, MapPin, Truck, Zap } from "lucide-react";
+import { ArrowRight, Truck, Zap } from "lucide-react";
 
 export const CtaCard = () => {
   const ref = useRef<HTMLDivElement>(null);
